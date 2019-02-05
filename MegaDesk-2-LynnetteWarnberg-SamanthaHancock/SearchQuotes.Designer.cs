@@ -40,6 +40,7 @@
             this.quoteAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surfaceMaterialValues = new System.Windows.Forms.ComboBox();
             this.getQuotes = new System.Windows.Forms.Button();
+            this.SurfaceMaterialLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataSearchAllQuotes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,7 +71,7 @@
             this.dataSearchAllQuotes.Location = new System.Drawing.Point(12, 110);
             this.dataSearchAllQuotes.Name = "dataSearchAllQuotes";
             this.dataSearchAllQuotes.RowTemplate.Height = 28;
-            this.dataSearchAllQuotes.Size = new System.Drawing.Size(966, 217);
+            this.dataSearchAllQuotes.Size = new System.Drawing.Size(1029, 244);
             this.dataSearchAllQuotes.TabIndex = 1;
             // 
             // quoteDate
@@ -116,7 +117,7 @@
             // surfaceMaterialValues
             // 
             this.surfaceMaterialValues.FormattingEnabled = true;
-            this.surfaceMaterialValues.Location = new System.Drawing.Point(171, 35);
+            this.surfaceMaterialValues.Location = new System.Drawing.Point(255, 35);
             this.surfaceMaterialValues.Name = "surfaceMaterialValues";
             this.surfaceMaterialValues.Size = new System.Drawing.Size(243, 28);
             this.surfaceMaterialValues.TabIndex = 2;
@@ -124,7 +125,7 @@
             // getQuotes
             // 
             this.getQuotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.getQuotes.Location = new System.Drawing.Point(447, 21);
+            this.getQuotes.Location = new System.Drawing.Point(527, 27);
             this.getQuotes.Name = "getQuotes";
             this.getQuotes.Size = new System.Drawing.Size(154, 42);
             this.getQuotes.TabIndex = 3;
@@ -132,11 +133,22 @@
             this.getQuotes.UseVisualStyleBackColor = true;
             this.getQuotes.Click += new System.EventHandler(this.getQuotes_Click);
             // 
+            // SurfaceMaterialLabel
+            // 
+            this.SurfaceMaterialLabel.AutoSize = true;
+            this.SurfaceMaterialLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.SurfaceMaterialLabel.Location = new System.Drawing.Point(46, 34);
+            this.SurfaceMaterialLabel.Name = "SurfaceMaterialLabel";
+            this.SurfaceMaterialLabel.Size = new System.Drawing.Size(193, 29);
+            this.SurfaceMaterialLabel.TabIndex = 4;
+            this.SurfaceMaterialLabel.Text = "Surface Material:";
+            // 
             // SearchQuotes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1005, 551);
+            this.ClientSize = new System.Drawing.Size(1090, 584);
+            this.Controls.Add(this.SurfaceMaterialLabel);
             this.Controls.Add(this.getQuotes);
             this.Controls.Add(this.surfaceMaterialValues);
             this.Controls.Add(this.dataSearchAllQuotes);
@@ -146,6 +158,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SearchQuotes_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataSearchAllQuotes)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -163,5 +176,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn quoteAmount;
         private System.Windows.Forms.ComboBox surfaceMaterialValues;
         private System.Windows.Forms.Button getQuotes;
+        private System.Windows.Forms.Label SurfaceMaterialLabel;
     }
 }
