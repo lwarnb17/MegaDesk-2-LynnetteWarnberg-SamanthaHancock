@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace MegaDesk_3_LynnetteWarnberg
 {
@@ -25,21 +26,23 @@ namespace MegaDesk_3_LynnetteWarnberg
 
         private void AddQuoteToFile(DeskQuote deskQuote)
         {
-            string quotesFile = @"quotes.text";
+            string quotesFile = @"quotes.json";
 
-            using (StreamWriter streamWriter = File.AppendText(quotesFile)) 
+            List<DeskQuote> currentQuotes = new List<DeskQuote>();
+            if(File.Exists(quotesFile))
             {
-                streamWriter.WriteLine(
-                    $"{deskQuote.QuoteDate}," +
-                    $"{deskQuote.CustomerName}," +
-                    $"{deskQuote.Desk.Depth}," +
-                    $"{deskQuote.Desk.Width}," +
-                    $"{deskQuote.Desk.NumberOfDrawers}," +
-                    $"{deskQuote.Desk.SurfaceMaterial}," +
-                    $"{deskQuote.DeliveryType}," +
-                    $"{deskQuote.QuoteAmount}");
-
+                using (StreamReader streamReader = new StreamReader(quotesFile))
+                {
+                    string quotes = streamReader.ReadToEnd();
+                    currentQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+                }
             }
+
+            currentQuotes.Add(deskQuote);
+            string newQuotes = JsonConvert.SerializeObject(currentQuotes);
+
+            File.WriteAllText(quotesFile, newQuotes);
+
 
         }
         private void AddQuote_FormClosing(object sender, FormClosingEventArgs e)

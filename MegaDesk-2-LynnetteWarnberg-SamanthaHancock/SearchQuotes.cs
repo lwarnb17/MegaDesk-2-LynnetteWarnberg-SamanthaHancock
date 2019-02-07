@@ -36,19 +36,42 @@ namespace MegaDesk_3_LynnetteWarnberg
         {
             try
             {
-                dataSearchAllQuotes.Rows.Clear();
+                //    dataSearchAllQuotes.Rows.Clear();
 
-                string surfaceMaterial = surfaceMaterialValues.SelectedValue.ToString();
+                //    string surfaceMaterial = surfaceMaterialValues.SelectedValue.ToString();
 
-                string[] deskQuotes = File.ReadAllLines(@"quotes.text");
+                //    string[] deskQuotes = File.ReadAllLines(@"quotes.text");
 
-                foreach (string deskQuote in deskQuotes)
+                //    foreach (string deskQuote in deskQuotes)
+                //    {
+                //        string[] arrRow = deskQuote.Split(new char[] { ',' });
+                //        if (arrRow[5] == surfaceMaterial) {
+                //            dataSearchAllQuotes.Rows.Add(arrRow);
+                //        }
+
+                //    }
+                //}
+
+                var quotesFile = @"quotes.json";
+
+                using (StreamReader reader = new StreamReader(quotesFile))
                 {
-                    string[] arrRow = deskQuote.Split(new char[] { ',' });
-                    if (arrRow[5] == surfaceMaterial) {
-                        dataSearchAllQuotes.Rows.Add(arrRow);
-                    }
+                    string quotes = reader.ReadToEnd();
+                    List<DeskQuote> allQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
 
+                    dataSearchAllQuotes.DataSource = allQuotes.Select(d => new
+                    {
+                        QuoteDate = d.QuoteDate,
+                        CustomerName = d.CustomerName,
+                        Width = d.Desk.Width,
+                        Depth = d.Desk.Depth,
+                        NumberOfDrawers = d.Desk.NumberOfDrawers,
+                        SurfaceMaterial = d.Desk.SurfaceMaterial,
+                        DeliveryType = d.DeliveryType,
+                        QuoteAmount = d.QuoteAmount
+                    })
+                        .Where(q => q.SurfaceMaterial == (Desk.Surface)surfaceMaterialValues.SelectedValue)
+                        .ToList();
                 }
             }
             catch (FileNotFoundException)
@@ -72,27 +95,7 @@ namespace MegaDesk_3_LynnetteWarnberg
             var mainMenu = (MainMenu)Tag;
             mainMenu.Show();
         
-       var quotesFile = @"quotes.json"; 
-
-        using (StreamReader reader = new StreamReader(quotesFile))
-            {
-                string quotes = reader.ReadToEnd();
-    List<DeskQuote> allQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
-
-    dataSearchAllQuotes.DataSource = allQuotes.Select(d => new
-        {
-            QuoteDate = d.QuoteDate,
-            CustomerName = d.CustomerName,
-            Width = d.Desk.Width,
-            Depth = d.Desk.Depth,
-            NumberOfDrawers = d.Desk.NumberOfDrawers,
-            SurfaceMaterial = d.Desk.SurfaceMaterial,
-            DeliveryType = d.DeliveryType,
-            QuoteAmount = d.QuoteAmount
-        })
-        .Where(q => q.SurfaceMaterial == (Desk.Surface)surfaceMaterialValues.SelectedValue)
-        .ToList();
-        }
+       
        }
     }
 }

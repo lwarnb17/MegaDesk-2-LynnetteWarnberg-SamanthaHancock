@@ -23,33 +23,21 @@ namespace MegaDesk_3_LynnetteWarnberg
         
         private void loadGrid()
         {
-            try
-            {
-                string[] deskQuotes = File.ReadAllLines(@"quotes.text");
+            //try
+            //{
+            //    string[] deskQuotes = File.ReadAllLines(@"quotes.text");
 
-                foreach (string deskQuote in deskQuotes)
-                {
-                    string[] arrRow = deskQuote.Split(new char[] { ',' });
-                    
-                    dataViewAllQuotes.Rows.Add(arrRow);
-                }
-            }
-            catch (FileNotFoundException)
-            {
-                MessageBox.Show("No Qoutes have been created.");
-            }
-        }
+            //    foreach (string deskQuote in deskQuotes)
+            //    {
+            //        string[] arrRow = deskQuote.Split(new char[] { ',' });
 
-        private void cancelQuoteButton_Click(object sender, EventArgs e)
-        {
-            
-            Close();
-        }
-
-        private void ViewAllQuotes_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            var mainMenu = (MainMenu)Tag;
-            mainMenu.Show();
+            //        dataViewAllQuotes.Rows.Add(arrRow);
+            //    }
+            //}
+            //catch (FileNotFoundException)
+            //{
+            //    MessageBox.Show("No Qoutes have been created.");
+            //}
 
             var quotesFile = @"quotes.json";
 
@@ -70,6 +58,20 @@ namespace MegaDesk_3_LynnetteWarnberg
                     QuoteAmount = d.QuoteAmount
                 }).ToList();
             }
+        }
+
+        private void cancelQuoteButton_Click(object sender, EventArgs e)
+        {
+            
+            Close();
+        }
+
+        private void ViewAllQuotes_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var mainMenu = (MainMenu)Tag;
+            mainMenu.Show();
+
+            
         }
     }
 }

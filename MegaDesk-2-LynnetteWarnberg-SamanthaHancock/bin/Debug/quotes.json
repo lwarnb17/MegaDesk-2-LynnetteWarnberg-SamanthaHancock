@@ -1,0 +1,14 @@
+[
+  {
+    "Desk": {
+      "Width": 27.0,
+      "Depth": 38.0,
+      "NumberOfDrawers": 4,
+      "SurfaceMaterial": 3
+    },
+    "CustomerName": "Lynn",
+    "QuoteDate": "2019-02-07T15:08:58.4036854-07:00",
+    "DeliveryType": 0,
+    "QuoteAmount": 621.00
+  }
+]
