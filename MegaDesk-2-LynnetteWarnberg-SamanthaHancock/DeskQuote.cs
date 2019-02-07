@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace MegaDesk_3_LynnetteWarnberg
 
@@ -19,15 +20,15 @@ namespace MegaDesk_3_LynnetteWarnberg
         const decimal PINE_COST = 50.00M;
         const decimal ROSEWOOD_COST = 300.00M;
         const decimal VENEER_COST = 125.00M;
-        const decimal RUSH_3DAY_LESS_THAN_1000 = 60.00M;
-        const decimal RUSH_3DAY_1000_TO_2000 = 70.00M;
-        const decimal RUSH_3DAY_GREATER_THAN_2000 = 80.00M;
-        const decimal RUSH_5DAY_LESS_THAN_1000 = 40.00M;
-        const decimal RUSH_5DAY_1000_TO_2000 = 50.00M;
-        const decimal RUSH_5DAY_GREATER_THAN_2000 = 60.00M;
-        const decimal RUSH_7DAY_LESS_THAN_1000 = 30.00M;
-        const decimal RUSH_7DAY_1000_TO_2000 = 35.00M;
-        const decimal RUSH_7DAY_GREATER_THAN_2000 = 40.00M;
+        //const decimal RUSH_3DAY_LESS_THAN_1000 = 60.00M;
+        //const decimal RUSH_3DAY_1000_TO_2000 = 70.00M;
+        //const decimal RUSH_3DAY_GREATER_THAN_2000 = 80.00M;
+        //const decimal RUSH_5DAY_LESS_THAN_1000 = 40.00M;
+        //const decimal RUSH_5DAY_1000_TO_2000 = 50.00M;
+        //const decimal RUSH_5DAY_GREATER_THAN_2000 = 60.00M;
+        //const decimal RUSH_7DAY_LESS_THAN_1000 = 30.00M;
+        //const decimal RUSH_7DAY_1000_TO_2000 = 35.00M;
+        //const decimal RUSH_7DAY_GREATER_THAN_2000 = 40.00M;
 
         //Properties
         public Desk Desk { get; set; }
@@ -149,6 +150,25 @@ namespace MegaDesk_3_LynnetteWarnberg
             quotePrice = 200 + surfacePrice + NumOfDrawersPrice + surfaceMaterialPrice + shippingPrice;
 
             return quotePrice;
+        }
+        private int [,]  getRushOrder(string v)
+        {
+            String[] shippingArray = File.ReadAllLines(v);
+
+            int[,] prices  = new int[3,3];
+
+            int j = 0;
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int x = 0; x < 3; x++)
+                {
+                    prices[i,x] = Int32.Parse(shippingArray[j]);
+                    j++;
+                }
+              
+            }
+            return prices;
         }
     }
      
