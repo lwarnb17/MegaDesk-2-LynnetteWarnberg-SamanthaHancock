@@ -11,7 +11,7 @@ namespace MegaDesk_3_LynnetteWarnberg
 {
     public class DeskQuote
     {
-        //constants
+        
         const decimal BASE_DESK_PRICE = 200.00M;
         const decimal SURFACE_AREA_COST = 1.00M;
         const decimal DRAWER_COST = 50.00M;
@@ -20,15 +20,7 @@ namespace MegaDesk_3_LynnetteWarnberg
         const decimal PINE_COST = 50.00M;
         const decimal ROSEWOOD_COST = 300.00M;
         const decimal VENEER_COST = 125.00M;
-        //const decimal RUSH_3DAY_LESS_THAN_1000 = 60.00M;
-        //const decimal RUSH_3DAY_1000_TO_2000 = 70.00M;
-        //const decimal RUSH_3DAY_GREATER_THAN_2000 = 80.00M;
-        //const decimal RUSH_5DAY_LESS_THAN_1000 = 40.00M;
-        //const decimal RUSH_5DAY_1000_TO_2000 = 50.00M;
-        //const decimal RUSH_5DAY_GREATER_THAN_2000 = 60.00M;
-        //const decimal RUSH_7DAY_LESS_THAN_1000 = 30.00M;
-        //const decimal RUSH_7DAY_1000_TO_2000 = 35.00M;
-        //const decimal RUSH_7DAY_GREATER_THAN_2000 = 40.00M;
+        
 
         //Properties
         public Desk Desk { get; set; }
@@ -93,6 +85,20 @@ namespace MegaDesk_3_LynnetteWarnberg
                     surfaceMaterialPrice = 125;
                     break;
             }
+
+            int[,] rushOrderArray = getRushOrder(@"rushOrderPrices.txt");
+
+            
+            int RUSH_3DAY_LESS_THAN_1000 = rushOrderArray[0, 0];
+            int RUSH_3DAY_1000_TO_2000 = rushOrderArray[0, 1];
+            int RUSH_3DAY_GREATER_THAN_2000 = rushOrderArray[0, 2];
+            int RUSH_5DAY_LESS_THAN_1000 = rushOrderArray[1, 0];
+            int RUSH_5DAY_1000_TO_2000 = rushOrderArray[1, 1];
+            int RUSH_5DAY_GREATER_THAN_2000 = rushOrderArray[1, 2];
+            int RUSH_7DAY_LESS_THAN_1000 = rushOrderArray[2, 0];
+            int RUSH_7DAY_1000_TO_2000 = rushOrderArray[2, 1];
+            int RUSH_7DAY_GREATER_THAN_2000 = rushOrderArray[2, 2];
+
 
             var shippingPrice = 0;
             switch (DeliveryType)
