@@ -22,5 +22,29 @@
     "QuoteDate": "2019-02-08T11:45:48.7586262-07:00",
     "DeliveryType": 1,
     "QuoteAmount": 700.00
+  },
+  {
+    "Desk": {
+      "Width": 28.0,
+      "Depth": 40.0,
+      "NumberOfDrawers": 3,
+      "SurfaceMaterial": 3
+    },
+    "CustomerName": "Zoe",
+    "QuoteDate": "2019-02-08T11:56:49.2567164-07:00",
+    "DeliveryType": 2,
+    "QuoteAmount": 630.00
+  },
+  {
+    "Desk": {
+      "Width": 29.0,
+      "Depth": 41.0,
+      "NumberOfDrawers": 3,
+      "SurfaceMaterial": 4
+    },
+    "CustomerName": "Tammy",
+    "QuoteDate": "2019-02-08T12:01:13.6856023-07:00",
+    "DeliveryType": 1,
+    "QuoteAmount": 639.00
   }
 ]
