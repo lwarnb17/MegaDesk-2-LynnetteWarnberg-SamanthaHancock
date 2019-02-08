@@ -10,5 +10,17 @@
     "QuoteDate": "2019-02-07T15:08:58.4036854-07:00",
     "DeliveryType": 0,
     "QuoteAmount": 621.00
+  },
+  {
+    "Desk": {
+      "Width": 30.0,
+      "Depth": 40.0,
+      "NumberOfDrawers": 4,
+      "SurfaceMaterial": 4
+    },
+    "CustomerName": "Sam",
+    "QuoteDate": "2019-02-08T11:45:48.7586262-07:00",
+    "DeliveryType": 1,
+    "QuoteAmount": 700.00
   }
 ]
